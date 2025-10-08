@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+.path {
+  /* -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 40% 100%, 0% 100%); */
+  /* clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 40% 100%, 0% 100%); */
+  -webkit-clip-path: url(#wave);
+  clip-path: url(#wave);
+}
+
+@font-face {
+  font-family: "Cairoli";
+  src: url("/assets/fonts/Italiantype - CairoliClassic Extended Thin Italic.ttf");
+}
+
+@font-face {
+  font-family: "KaBlam";
+  src: url("/assets/fonts/Ka Blam.ttf");
+}
+
+@font-face {
+  font-family: "Grotesk";
+  src: url("/assets/fonts/urw-grotesk-wide-bold-oblique.ttf");
+}
+
+@theme {
+  --font-Cairoli: "Cairoli";
+  --font-KaBlam: "KaBlam";
+  --font-Grotesk: "Grotesk";
+}
