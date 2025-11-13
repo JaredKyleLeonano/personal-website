@@ -22,8 +22,24 @@
   src: url("/assets/fonts/urw-grotesk-wide-bold-oblique.ttf");
 }
 
+@font-face {
+  font-family: "Exo2";
+  src: url("/assets/fonts/Exo2-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "Zrnic";
+  src: url("/assets/fonts/zrnic rg.otf");
+}
+
 @theme {
   --font-Cairoli: "Cairoli";
   --font-KaBlam: "KaBlam";
   --font-Grotesk: "Grotesk";
+  --font-Exo2: "Exo2";
+  --font-Zrnic: "Zrnic";
+}
+
+.canvas {
+  touch-action: auto !important;
 }
