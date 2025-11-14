@@ -13,9 +13,26 @@ import WorkCard from "./components/WorkCard";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
+import { faEnvelope, faFile } from "@fortawesome/free-regular-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faPaperPlane } from "@fortawesome/free-regular-svg-icons";
+import { faFileAlt } from "@fortawesome/free-regular-svg-icons";
+import emailjs from "@emailjs/browser";
+
+const sendEmail = (e) => {
+  e.preventDefault();
+  emailjs
+    .sendForm(
+      "service_gusbjy8",
+      "template_na88q9q",
+      e.target,
+      "t2uFcbNd_DbRgahH1"
+    )
+    .then(
+      () => alert("Email sent!"),
+      (error) => alert("Error: " + error.text)
+    );
+};
 
 function App() {
   const works = [
@@ -101,6 +118,7 @@ function App() {
   const section3Ref = useRef<HTMLElement>(null);
   const section4Ref = useRef<HTMLElement>(null);
   const section5Ref = useRef<HTMLElement>(null);
+  const section6Ref = useRef<HTMLElement>(null);
   const wireframeRef = useRef<HTMLElement>(null);
   const testingRef = useRef<HTMLElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -111,6 +129,7 @@ function App() {
   const section4Visible = useInView(section4Ref, { amount: 0.3 });
   const section4AllowHover = useInView(section4Ref, { amount: 1 });
   const section5Visible = useInView(section5Ref, { amount: 0.3 });
+  const section6Visible = useInView(section6Ref, { amount: 0.3 });
 
   const [scrollDirection, setScrollDirection] = useState<"up" | "down">("down");
   const lastScrollY = useRef(0);
@@ -144,7 +163,9 @@ function App() {
   }, []);
   // let headerText = "Contact Me"; // Default text for end of scroll
   let headerText = "default"; // Default text
-  if (section5Visible) {
+  if (section6Visible) {
+    headerText = "Links";
+  } else if (section5Visible) {
     headerText = "Contact Me";
   } else if (section4Visible) {
     headerText = "Works";
@@ -620,69 +641,163 @@ function App() {
         </section>
         <section
           ref={section5Ref}
-          className="flex justify-center items-center h-screen w-screen relative [background:radial-gradient(ellipse_100%_120%_at_10%_53%,#B37800_0%,black_40%)] snap-center"
+          className="flex justify-center items-center h-screen w-screen relative [background:radial-gradient(ellipse_100%_130%_at_2%_53%,#B37800_0%,black_40%)] snap-center"
         >
-          <div ref={wireframeRef} className="flex-1 h-full w-full"></div>
-          <div className="flex-2 h-full w-full">
-            <div className="flex h-full flex-col gap-6 -ml-10 items-center justify-center">
-              <div className="w-180 border-2 p-6 border-[#364153]">
-                <div className="flex items-center gap-4">
-                  <div className="flex justify-center items-center p-3 border-2 border-[#364153]">
+          <div ref={wireframeRef} className="flex-3 h-full w-full"></div>
+          <div className="flex-4 h-full w-full">
+            <div className="flex h-full flex-col gap-6 justify-center items-center">
+              <div className="w-180 p-6">
+                <div className="flex flex-col items-center gap-4 text-white font-Exo2">
+                  <p className=" font-bold text-5xl">
+                    Let's <span className="text-yellow-400">connect!</span>
+                  </p>
+                  <p className=" text-2xl">
+                    Feel free to reach out for collaborations or project
+                    inquiries
+                  </p>
+                </div>
+              </div>
+              <div className="w-full h-100 border-2 p-6 border-[#364153]">
+                <form
+                  className="flex flex-col h-full justify-between items-center text-white font-Exo2"
+                  onSubmit={sendEmail}
+                >
+                  <div className="flex w-full justify-between gap-24">
+                    <div className="flex w-full gap-4 flex-col ">
+                      <label className="text-sm text-gray-400">Your Name</label>
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="Enter your Name"
+                        required
+                        autoComplete="name"
+                        className="placeholder-gray-400 appearance-none text-lg focus:outline-none focus:border-b-yellow-400 transition-colors duration-300 ease-out border-b-1 border-b-[#364153] pb-1"
+                      ></input>
+                    </div>
+                    <div className="flex w-full gap-4 flex-col">
+                      <label className="text-sm text-gray-400">
+                        Your Email
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="Enter your Email"
+                        required
+                        autoComplete="email"
+                        className="placeholder-gray-400 appearance-none text-lg focus:outline-none focus:border-b-yellow-400 transition-colors duration-300 ease-out border-b-1 border-b-[#364153] pb-1"
+                      ></input>
+                    </div>
+                  </div>
+                  <div className="flex w-full gap-4 flex-col ">
+                    <label className="text-sm text-gray-400">
+                      Enter your Message
+                    </label>
+                    <textarea
+                      name="message"
+                      placeholder="Share your thoughts, feedback, or collaboration ideas..."
+                      className="focus:outline-none border-b-1 resize-none border-b-[#364153] pb-1 placeholder-gray-400 text-lg focus:border-b-yellow-400 transition-colors duration-300 ease-out"
+                    ></textarea>
+                  </div>
+                  <button
+                    type="submit"
+                    className="flex gap-2 items-center justify-center w-64 p-4 border-2 border-[#364153] hover:border-yellow-400 transition-colors duration-300 ease-out"
+                  >
+                    <p className="font-bold">Send</p>
                     <FontAwesomeIcon
-                      className="text-yellow-400 text-3xl"
+                      className="text-yellow-400"
                       icon={faPaperPlane}
                     ></FontAwesomeIcon>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div className="flex-1"> </div>
+        </section>
+        <section
+          ref={section6Ref}
+          className="flex justify-center items-center h-screen w-screen relative bg-linear-to-b from-black to-[#1a1a1a] to-20% snap-center"
+        >
+          <div className="absolute inset-0 pointer-events-none opacity-20 bg-[repeating-linear-gradient(0deg,transparent,transparent_2px,rgba(45,212,191,0.03)_2px,rgba(45,212,191,0.03)_4px)]" />
+          <div className="flex h-full flex-col w-full items-center justify-center px-64 gap-16">
+            <div className="text-[#d1d5dc] text-7xl font-Zrnic">
+              Find Me Online
+            </div>
+            <div className="flex w-full gap-8">
+              <div className="flex-1 border-2 p-6 bg-gray-900/30 border-[#364153] group hover:border-[#6a7282] hover:shadow-[0_0_25px_#6a7282] transition-all duration-300">
+                <div className="flex flex-col items-center gap-1">
+                  <div className="flex justify-center items-center p-2 border-2 bg-[#1f2a3b] border-[#364153] group-hover:border-[#6a7282] duration-300">
+                    <FontAwesomeIcon
+                      className="text-[#99a1af] bg-gray-800 text-3xl group-hover:text-[#d1d5dc] transition-colors duration-300"
+                      icon={faEnvelope}
+                    ></FontAwesomeIcon>
                   </div>
-                  <div className="flex flex-col text-white">
-                    <p className="font-Exo2 font-bold text-xl">
-                      Let's connect! Feel free to reach out for collaborations
-                      or project inquiries
+                  <div className="flex flex-col items-center text-white">
+                    <p className="font-Exo2 font-light text-[#444e5d]">EMAIl</p>
+                    <p className="font-Exo2 text-[#99a1af] group-hover:text-[#d1d5dc] transition-colors duration-300">
+                      jaredleonano.3@gmail.com
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="w-120 border-2 p-6 border-[#364153] group hover:border-yellow-400 hover:shadow-[0_0_25px_#FACC15] transition-all duration-300">
-                <div className="flex items-center gap-6">
-                  <div className="flex justify-center items-center p-2 border-2 border-[#364153] group-hover:border-yellow-400 duration-300">
+              <div className="flex-1 border-2 p-6 bg-gray-900/30 border-[#364153] group hover:border-[#6a7282] hover:shadow-[0_0_25px_#6a7282] transition-all duration-300">
+                <div className="flex flex-col items-center gap-1">
+                  <div className="flex justify-center items-center p-2 border-2 bg-gray-800 border-[#364153] group-hover:border-[#6a7282] duration-300">
                     <FontAwesomeIcon
-                      className="text-yellow-400 text-3xl"
-                      icon={faEnvelope}
-                    ></FontAwesomeIcon>
-                  </div>
-                  <div className="flex flex-col text-white">
-                    <p className="font-Exo2 font-bold">Email</p>
-                    <p className="font-Exo2">jaredleonano.3@gmail.com</p>
-                  </div>
-                </div>
-              </div>
-              <div className="w-120 border-2 p-6 border-[#364153] group hover:border-yellow-400 hover:shadow-[0_0_25px_#FACC15] transition-all duration-300">
-                <div className="flex items-center gap-4">
-                  <div className="flex justify-center items-center p-2 border-2 border-[#364153] group-hover:border-yellow-400 duration-300">
-                    <FontAwesomeIcon
-                      className="text-yellow-400 text-3xl"
+                      className="text-[#99a1af] group-hover:text-[#d1d5dc]  text-3xl transition-colors duration-300"
                       icon={faGithub}
                     ></FontAwesomeIcon>
                   </div>
-                  <div className="flex flex-col text-white">
-                    <p className="font-Exo2 font-bold">Github</p>
-                    <p className="font-Exo2">github.com/JaredKyleLeonano</p>
+                  <div className="flex flex-col items-center text-white">
+                    <p className="font-Exo2 font-light text-[#444e5d]">
+                      GITHUB
+                    </p>
+                    <p className="font-Exo2 text-[#99a1af] group-hover:text-[#d1d5dc] transition-colors duration-300">
+                      github.com/JaredKyleLeonano
+                    </p>
                   </div>
                 </div>
               </div>
-              <div className="w-120 border-2 p-6 border-[#364153] group hover:border-yellow-400 hover:shadow-[0_0_25px_#FACC15] transition-all duration-300">
-                <div className="flex items-center gap-4">
-                  <div className="flex justify-center items-center p-2 border-2 border-[#364153] group-hover:border-yellow-400 duration-300">
+              <div className="flex-1 border-2 p-6 bg-gray-900/30 border-[#364153] group hover:border-[#6a7282] hover:shadow-[0_0_25px_#6a7282] transition-all duration-300">
+                <div className="flex flex-col items-center gap-1">
+                  <div className="flex justify-center items-center p-2 border-2 bg-gray-800 border-[#364153] group-hover:border-[#6a7282] duration-300">
                     <FontAwesomeIcon
-                      className="text-yellow-400 text-3xl"
+                      className="text-[#99a1af] group-hover:text-[#d1d5dc] text-3xl transition-colors duration-300"
                       icon={faLinkedin}
                     ></FontAwesomeIcon>
                   </div>
-                  <div className="flex flex-col text-white">
-                    <p className="font-Exo2 font-bold">LinkedIn</p>
-                    <p className="font-Exo2">linkedin.com/in/jared-leonano/</p>
+                  <div className="flex flex-col items-center text-white">
+                    <p className="font-Exo2 font-light text-[#444e5d]">
+                      LINKEDIN
+                    </p>
+                    <p className="font-Exo2 text-[#99a1af] group-hover:text-[#d1d5dc] transition-colors duration-300">
+                      linkedin.com/in/jared-leonano/
+                    </p>
                   </div>
                 </div>
               </div>
+              <div className="flex-1 border-2 p-6 bg-gray-900/30 border-[#364153] group hover:border-[#6a7282] hover:shadow-[0_0_25px_#6a7282] transition-all duration-300">
+                <div className="flex flex-col items-center gap-1">
+                  <div className="flex justify-center items-center p-2 border-2 bg-gray-800 border-[#364153] group-hover:border-[#6a7282] duration-300">
+                    <FontAwesomeIcon
+                      className="text-[#99a1af] group-hover:text-[#d1d5dc] text-3xl transition-colors duration-300"
+                      icon={faFileAlt}
+                    ></FontAwesomeIcon>
+                  </div>
+                  <div className="flex flex-col items-center text-white">
+                    <p className="font-Exo2 font-light text-[#444e5d]">
+                      RESUME
+                    </p>
+                    <p className="font-Exo2 text-[#99a1af] group-hover:text-[#d1d5dc] transition-colors duration-300">
+                      Download CV
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col gap-2 w-full">
+              <hr className="w-full text-[#1d2837]"></hr>
+              <p className="text-[#4a5565] font-Exo2">© 2025 LEONANO</p>
             </div>
           </div>
         </section>

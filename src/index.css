@@ -39,7 +39,3 @@
   --font-Exo2: "Exo2";
   --font-Zrnic: "Zrnic";
 }
-
-.canvas {
-  touch-action: auto !important;
-}
