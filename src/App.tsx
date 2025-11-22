@@ -13,10 +13,24 @@ import CanvasContainer from "./components/CanvasContainer";
 import CompiledWorks from "./components/CompiledWorks";
 
 function App() {
+  const [mobile, setMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    function handleResize() {
+      setMobile(window.innerWidth < 768);
+    }
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const groupedWorks = [];
 
-  for (let i = 0; i < CompiledWorks.length; i += 4) {
-    groupedWorks.push(CompiledWorks.slice(i, i + 4));
+  for (let i = 0; i < CompiledWorks.length; i += mobile ? 2 : 4) {
+    groupedWorks.push(CompiledWorks.slice(i, i + (mobile ? 2 : 4)));
   }
 
   const section1Ref = useRef<HTMLDivElement>(null);
@@ -99,6 +113,7 @@ function App() {
       <CanvasContainer
         sectionRef={section1Ref}
         wireframeRef={wireframeRef}
+        isMobile={mobile}
       ></CanvasContainer>
 
       <LandingPage sectionRef={section1Ref}></LandingPage>
@@ -113,9 +128,14 @@ function App() {
         containerRef={containerRef}
         sectionRef={section3Ref}
         scrollDirection={scrollDirection}
+        isMobile={mobile}
       ></History>
 
-      <Works sectionRef={section4Ref} groupedWorks={groupedWorks}></Works>
+      <Works
+        sectionRef={section4Ref}
+        groupedWorks={groupedWorks}
+        isMobile={mobile}
+      ></Works>
 
       <ContactMe sectionRef={section5Ref} globeRef={wireframeRef}></ContactMe>
 

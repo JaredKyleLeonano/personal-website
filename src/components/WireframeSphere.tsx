@@ -14,7 +14,7 @@ const WireframeSphere = () => {
   });
 
   return (
-    <mesh ref={sphereRef} rotation={[0, 0, 3]} position={[-1, -0.2, 0]}>
+    <mesh ref={sphereRef} rotation={[0, 0, 3]} position={[0, -0.2, -2]}>
       <sphereGeometry args={[2.7, 24, 24]} />
 
       <meshStandardMaterial

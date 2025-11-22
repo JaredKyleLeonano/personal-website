@@ -12,7 +12,7 @@ const Header = ({
         <hr className="w-full h-[1px] bg-gradient-to-l from-white from-50% to-transparent border-0"></hr>
         <AnimatePresence mode="wait">
           <motion.h2
-            className="mx-16 w-112 whitespace-nowrap font-Exo2 text-4xl text-center text-white"
+            className="mx-16 w-112 whitespace-nowrap font-Exo2 text-center text-white text-lg sm:text-2xl md:text-4xl"
             key={headerText}
             initial={
               scrollDirection === "down"

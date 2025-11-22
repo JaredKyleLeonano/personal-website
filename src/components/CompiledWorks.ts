@@ -6,7 +6,7 @@ const CompiledWorks = [
     status: "Completed",
     techStack: ["React", "TypeScript", "Tailwind"],
     link: "https://ableton-practice-dusky.vercel.app/",
-    img: "public/assets/images/abletonClone.jpg",
+    img: "/assets/images/abletonClone.jpg",
   },
   {
     title: "Modified LawBandit",
@@ -15,7 +15,7 @@ const CompiledWorks = [
     status: "In Progress",
     techStack: ["Node Js", "TypeScript", "Tailwind", "OpenAI API", "Supabase"],
     link: "none",
-    img: "public/assets/images/lawBandit2.jpg",
+    img: "/assets/images/lawBandit2.jpg",
   },
   {
     title: "Pautakan Scoreboard",
@@ -24,33 +24,25 @@ const CompiledWorks = [
     status: "Completed",
     techStack: ["Electron Js", "TypeScript", "Tailwind", "SQLite"],
     link: "https://github.com/amielchristian/pautakan-2025#",
-    img: "public/assets/images/pautakan.jpg",
+    img: "/assets/images/pautakan.jpg",
   },
   // {
-  //   title: "LawBandit Clone",
+  //   title: "Modified LawBandit",
   //   description:
   //     "A front-end recreation of LawBandit's official homepage with added AI feature to read course syllabus and schedule tasks automatically",
   //   status: "In Progress",
-  //   techStack: [
-  //     "Node Js",
-  //     "TypeScript",
-  //     "Tailwind",
-  //     "OpenAI API",
-  //     "Supabase",
-  //   ],
+  //   techStack: ["Node Js", "TypeScript", "Tailwind", "OpenAI API", "Supabase"],
+  //   link: "none",
+  //   img: "/assets/images/lawBandit2.jpg",
   // },
   // {
-  //   title: "LawBandit Clone",
+  //   title: "Pautakan Scoreboard",
   //   description:
-  //     "A front-end recreation of LawBandit's official homepage with added AI feature to read course syllabus and schedule tasks automatically",
-  //   status: "In Progress",
-  //   techStack: [
-  //     "Node Js",
-  //     "TypeScript",
-  //     "Tailwind",
-  //     "OpenAI API",
-  //     "Supabase",
-  //   ],
+  //     "A custom built scoreboard application for Pautakan, a university wide quiz competition",
+  //   status: "Completed",
+  //   techStack: ["Electron Js", "TypeScript", "Tailwind", "SQLite"],
+  //   link: "https://github.com/amielchristian/pautakan-2025#",
+  //   img: "/assets/images/pautakan.jpg",
   // },
 ];
 

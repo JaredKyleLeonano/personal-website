@@ -4,15 +4,23 @@ const History = ({
   containerRef,
   sectionRef,
   scrollDirection,
+  isMobile,
 }: {
   containerRef: React.RefObject<HTMLDivElement | null>;
   sectionRef: React.RefObject<HTMLDivElement | null>;
   scrollDirection: string;
+  isMobile: boolean;
 }) => {
+  const descriptions = [
+    "Established the core principles of software engineering by mastering Java for object-oriented logic and building responsive, interactive user interfaces with HTML, CSS, and vanilla JavaScript",
+    "Pivoted to modern component architecture by adopting React for building highly performant Single-Page Applications (SPAs) and expanding my algorithmic toolkit with Python for backend logic and data processing",
+    "Completed the full-stack loop by gaining proficiency in server-side development (Node.js), implementing robust data modeling and persistence with PostgreSQL/SQL, and integrating scalable solutions through API calls",
+    "Currently focused on advancing next-level user experience (UX) using Tailwind CSS, fully responsive design, Framer Motion, and Three.js, while continuously learning to refine code quality and maintainability through advanced TypeScript practices",
+  ];
   return (
     <section
       ref={sectionRef}
-      className="h-screen w-screen relative bg-black snap-center"
+      className="h-screen w-screen relative flex flex-col justify-center gap-6 bg-black snap-center"
     >
       <motion.div
         className="absolute inset-0 h-full w-full z-20
@@ -41,84 +49,57 @@ const History = ({
           ease: "easeOut",
         }}
       ></motion.div>
-      <motion.div
-        className="flex flex-col relative gap-24 items-center w-full z-30"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ root: containerRef, amount: 1, once: true }}
-        transition={{
-          duration: 1,
-          ease: "easeOut",
-        }}
-      >
-        <div className="mt-44 flex flex-col items-center relative gap-18">
-          <div className="relative">
-            <div className="group">
-              <div className="flex justify-center items-center w-24 h-24 bg-[#491275] rounded-full border-4 border-[#A855F7] shadow-[0_0_25px_#A855F7] hover:scale-110 transition-transform duration-300 ease-out">
-                <p className="font-Zrnic text-white text-5xl">1</p>
+
+      <div className="flex h-5/6 pt-24 flex-col justify-between px-8 md:px-16 md:pb-8">
+        <motion.div
+          className={`flex flex-col relative gap-24 w-full z-30 ${
+            isMobile ? "items-start" : "items-center"
+          }`}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ root: containerRef, amount: 1, once: true }}
+          transition={{
+            duration: 1,
+            ease: "easeOut",
+          }}
+        >
+          <div className="flex flex-col items-center relative gap-10 md:gap-18">
+            {descriptions.map((description, index) => (
+              <div key={index} className="relative">
+                <button className="group">
+                  <div className="flex justify-center items-center peer bg-[#491275] rounded-full border-4 border-[#A855F7] shadow-[0_0_25px_#A855F7] hover:scale-110 transition-transform duration-300 ease-out w-18 h-18 md:w-24 md:h-24">
+                    <p className="font-Zrnic text-white text-3xl md:text-5xl">
+                      {index + 1}
+                    </p>
+                  </div>
+                  <div
+                    className={`absolute top-1/2 -translate-y-1/2 w-56  md:w-144 flex items-center p-4 bg-[#101626] border-2 border-[#7F22E360] opacity-0 rounded-lg group-hover:opacity-100 group-focus:opacity-100 pointer-events-none transition-all duration-400 ease-out 
+                      ${
+                        isMobile
+                          ? "left-[100%] group-focus:left-[120%]"
+                          : `${
+                              index % 2
+                                ? "left-[130%] group-hover:left-[150%] group-focus:left-[150%]"
+                                : "right-[130%] group-hover:right-[150%] group-focus:right-[150%]"
+                            }`
+                      }`}
+                  >
+                    <p className="font-Exo2 text-white text-xs md:text-lg">
+                      {description}
+                    </p>
+                  </div>
+                </button>
               </div>
-              <div className="absolute top-1/2 -translate-y-1/2 left-[130%] w-144 flex items-center p-4 bg-[#101626] border-2 border-[#7F22E360] opacity-0 rounded-lg group-hover:opacity-100 group-hover:left-[150%] pointer-events-none transition-all duration-400 ease-out">
-                <p className="font-Exo2 text-white text-lg">
-                  Established the core principles of software engineering by
-                  mastering Java for object-oriented logic and building
-                  responsive, interactive user interfaces with HTML, CSS, and
-                  vanilla JavaScript
-                </p>
-              </div>
-            </div>
+            ))}
+            <div className="absolute -top-6 h-full border-l-4 border-[#A855F7] -z-10"></div>
           </div>
-          <div className="relative">
-            <div className="group">
-              <div className="flex justify-center items-center w-24 h-24 bg-[#491275] rounded-full border-4 border-[#A855F7] shadow-[0_0_25px_#A855F7] hover:scale-110 transition-transform duration-300 ease-out">
-                <p className="font-Zrnic text-white text-5xl">2</p>
-              </div>
-              <div className="absolute top-1/2 -translate-y-1/2 right-[130%] w-144 flex items-center p-4 bg-[#101626] border-2 border-[#7F22E360] opacity-0 rounded-lg group-hover:opacity-100 group-hover:right-[150%] pointer-events-none transition-all duration-400 ease-out">
-                <p className="font-Exo2 text-white text-lg">
-                  Pivoted to modern component architecture by adopting React for
-                  building highly performant Single-Page Applications (SPAs) and
-                  expanding my algorithmic toolkit with Python for backend logic
-                  and data processing
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="relative">
-            <div className="group">
-              <div className="flex justify-center items-center w-24 h-24 bg-[#491275] rounded-full border-4 border-[#A855F7] shadow-[0_0_25px_#A855F7] hover:scale-110 transition-transform duration-300 ease-out">
-                <p className="font-Zrnic text-white text-5xl">3</p>
-              </div>
-              <div className="absolute top-1/2 -translate-y-1/2 left-[130%] w-144 flex items-center p-4 bg-[#101626] border-2 border-[#7F22E360] opacity-0 rounded-lg group-hover:opacity-100 group-hover:left-[150%] pointer-events-none transition-all duration-400 ease-out">
-                <p className="font-Exo2 text-white text-lg">
-                  Completed the full-stack loop by gaining proficiency in
-                  server-side development (Node.js), implementing robust data
-                  modeling and persistence with PostgreSQL/SQL, and integrating
-                  scalable solutions through API calls
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="relative">
-            <div className="group">
-              <div className="flex justify-center items-center w-24 h-24 bg-[#491275] rounded-full border-4 border-[#A855F7] shadow-[0_0_25px_#A855F7] hover:scale-110 transition-transform duration-300 ease-out">
-                <p className="font-Zrnic text-white text-5xl">4</p>
-              </div>
-              <div className="absolute top-1/2 -translate-y-1/2 right-[130%] w-144 flex items-center p-4 bg-[#101626] border-2 border-[#7F22E360] opacity-0 rounded-lg group-hover:opacity-100 group-hover:right-[150%] pointer-events-none transition-all duration-400 ease-out">
-                <p className="font-Exo2 text-white text-lg">
-                  Currently focused on advancing next-level user experience (UX)
-                  using Tailwind CSS, fully responsive design, Framer Motion,
-                  and Three.js, while continuously learning to refine code
-                  quality and maintainability through advanced TypeScript
-                  practices
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="text-purple-400/50 font-Exo2 text-lg">
-            Hover to Reveal Node Details
-          </div>
-          <div className="absolute -top-6 h-170 border-l-4 border-[#A855F7] -z-10"></div>
+        </motion.div>
+        <div className="text-purple-400/50 font-Exo2 text-lg mt-12 md:mt-2 text-center">
+          {isMobile
+            ? "Click to Reveal Node Details"
+            : "Hover to Reveal Node Details"}
         </div>
-      </motion.div>
+      </div>
       <motion.div
         className="absolute top-0 w-full h-2/5 bg-gradient-to-b from-blue-950 to-black opacity-60"
         key={scrollDirection}

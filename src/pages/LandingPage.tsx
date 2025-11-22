@@ -11,8 +11,10 @@ const LandingPage = ({
       <div className="absolute h-full w-full"></div>
       <div className="flex items-center h-full text-white">
         <div className="-translate-y-1/2 flex flex-col items-center">
-          <h1 className="text-8xl font-Zrnic">Full Stack Developer</h1>
-          <h2 className="text-3xl font-Exo2">
+          <h1 className=" font-Zrnic text-4xl sm:text-7xl md:text-8xl">
+            Full Stack Developer
+          </h1>
+          <h2 className=" font-Exo2 text-md sm:text-xl md:text-3xl">
             Aspiring Developer with Front End Proficiency
           </h2>
         </div>
