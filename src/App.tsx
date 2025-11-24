@@ -81,7 +81,7 @@ function App() {
   if (section6Visible) {
     headerText = "Links";
   } else if (section5Visible) {
-    headerText = "Contact Me";
+    headerText = "Contact";
   } else if (section4Visible) {
     headerText = "Works";
   } else if (section3Visible) {
