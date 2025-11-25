@@ -9,10 +9,10 @@ type WorkDetails = {
 
 type workCardProps = {
   works: WorkDetails[];
-  isMobile: boolean;
+  viewport: string;
 };
 
-const WorkCard = ({ works, isMobile }: workCardProps) => {
+const WorkCard = ({ works, viewport }: workCardProps) => {
   return (
     <div className="h-full w-full flex flex-col justify-between items-center gap-6 snap-start overflow-hidden z-20 p-2 md:p-8">
       <div className="h-full w-full flex flex-wrap items-center justify-between md:justify-center md:gap-6">
@@ -25,11 +25,11 @@ const WorkCard = ({ works, isMobile }: workCardProps) => {
               rel="external"
               target="_blank"
               key={`${index}`}
-              className={`md:w-[49%] h-[47%] flex justify-between bg-teal-950/50 border-2 border-[#084548] hover:border-[#148e94] transition-all duration-300 ease-out snap-center group rounded ${
+              className={`lg:w-[49%] h-[47%] flex justify-between bg-teal-950/50 border-2 border-[#084548] hover:border-[#148e94] transition-all duration-300 ease-out snap-center group rounded ${
                 isLinkValid ? "cursor-pointer" : "cursor-not-allowed"
               }`}
             >
-              <div className="flex flex-col h-full flex-4 justify-between p-4">
+              <div className="flex flex-col w-full h-full flex-4 justify-between p-4">
                 <div className="flex flex-col h-full gap-4">
                   <div className="flex justify-between">
                     <p className="font-Zrnic text-teal-500 text-xl md:text-3xl">
@@ -71,7 +71,11 @@ const WorkCard = ({ works, isMobile }: workCardProps) => {
                         ))}
                       </div>
                     </div>
-                    {!isMobile && (
+                    {!(
+                      viewport == "xs" ||
+                      viewport == "sm" ||
+                      viewport == "md"
+                    ) && (
                       <div className="flex-2 flex">
                         <img
                           src={work.img}

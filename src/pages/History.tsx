@@ -4,12 +4,12 @@ const History = ({
   containerRef,
   sectionRef,
   scrollDirection,
-  isMobile,
+  viewport,
 }: {
   containerRef: React.RefObject<HTMLDivElement | null>;
   sectionRef: React.RefObject<HTMLDivElement | null>;
   scrollDirection: string;
-  isMobile: boolean;
+  viewport: string;
 }) => {
   const descriptions = [
     "Established the core principles of software engineering by mastering Java for object-oriented logic and building responsive, interactive user interfaces with HTML, CSS, and vanilla JavaScript",
@@ -53,7 +53,9 @@ const History = ({
       <div className="flex h-5/6 pt-24 flex-col justify-between px-8 md:px-16 md:pb-8">
         <motion.div
           className={`flex flex-col relative gap-24 w-full z-30 ${
-            isMobile ? "items-start" : "items-center"
+            viewport == "xs" || viewport == "sm" || viewport == "md"
+              ? "items-start"
+              : "items-center"
           }`}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -75,7 +77,7 @@ const History = ({
                   <div
                     className={`absolute top-1/2 -translate-y-1/2 w-56  md:w-144 flex items-center p-4 bg-[#101626] border-2 border-[#7F22E360] opacity-0 rounded-lg group-hover:opacity-100 group-focus:opacity-100 pointer-events-none transition-all duration-400 ease-out 
                       ${
-                        isMobile
+                        viewport == "xs" || viewport == "sm" || viewport == "md"
                           ? "left-[100%] group-focus:left-[120%]"
                           : `${
                               index % 2
@@ -95,7 +97,7 @@ const History = ({
           </div>
         </motion.div>
         <div className="text-purple-400/50 font-Exo2 text-lg mt-12 md:mt-2 text-center">
-          {isMobile
+          {viewport == "xs" || viewport == "sm" || viewport == "md"
             ? "Click to Reveal Node Details"
             : "Hover to Reveal Node Details"}
         </div>

@@ -12,15 +12,33 @@ import Header from "./components/Header";
 import CanvasContainer from "./components/CanvasContainer";
 import CompiledWorks from "./components/CompiledWorks";
 
+const getBreakpoint = () => {
+  if (window.matchMedia("(min-width: 1536px)").matches) {
+    return "2xl";
+  } else if (window.matchMedia("(min-width: 1280px)").matches) {
+    return "xl";
+  } else if (window.matchMedia("(min-width: 1024px)").matches) {
+    return "lg";
+  } else if (window.matchMedia("(min-width: 768px)").matches) {
+    return "md";
+  } else if (window.matchMedia("(min-width: 640px)").matches) {
+    return "sm";
+  } else {
+    return "xs"; // optional: below 640px
+  }
+};
+
 function App() {
-  const [mobile, setMobile] = useState(window.innerWidth < 768);
+  const [mobile, setMobile] = useState(getBreakpoint);
 
   useEffect(() => {
     function handleResize() {
-      setMobile(window.innerWidth < 768);
+      setMobile(getBreakpoint);
     }
 
     handleResize();
+
+    console.log("SIZE IS CURRENTLY:", mobile);
 
     window.addEventListener("resize", handleResize);
 
@@ -113,7 +131,7 @@ function App() {
       <CanvasContainer
         sectionRef={section1Ref}
         wireframeRef={wireframeRef}
-        isMobile={mobile}
+        viewport={mobile}
       ></CanvasContainer>
 
       <LandingPage sectionRef={section1Ref}></LandingPage>
@@ -128,13 +146,13 @@ function App() {
         containerRef={containerRef}
         sectionRef={section3Ref}
         scrollDirection={scrollDirection}
-        isMobile={mobile}
+        viewport={mobile}
       ></History>
 
       <Works
         sectionRef={section4Ref}
         groupedWorks={groupedWorks}
-        isMobile={mobile}
+        viewport={mobile}
       ></Works>
 
       <ContactMe sectionRef={section5Ref} globeRef={wireframeRef}></ContactMe>

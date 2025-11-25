@@ -12,11 +12,11 @@ interface Work {
 const Works = ({
   sectionRef,
   groupedWorks,
-  isMobile,
+  viewport,
 }: {
   sectionRef: React.RefObject<HTMLDivElement | null>;
   groupedWorks: Work[][];
-  isMobile: boolean;
+  viewport: string;
 }) => {
   return (
     <section
@@ -26,7 +26,7 @@ const Works = ({
       <div className="absolute inset-0 pointer-events-none opacity-20 bg-[repeating-linear-gradient(0deg,transparent,transparent_2px,rgba(45,212,191,0.03)_2px,rgba(45,212,191,0.03)_4px)]" />
       <div className="mt-16 relative overflow-y-scroll border-3 border-teal-500 rounded-xl bg-black/30 shadow-[0_0_25px_#22D3EE] snap-y snap-mandatory h-[75%] w-[90%] md:h-[60%] md:w-[80%]">
         {groupedWorks.map((works, index) => (
-          <WorkCard key={index} works={works} isMobile={isMobile} />
+          <WorkCard key={index} works={works} viewport={viewport} />
         ))}
       </div>
     </section>
