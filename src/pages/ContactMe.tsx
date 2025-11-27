@@ -50,7 +50,7 @@ const ContactMe = ({
     >
       <div
         ref={globeRef}
-        className="flex-3 hidden lg:-translate-x-48 lg:block lg:scale-150 lg:static lg:h-full lg:w-full"
+        className="flex-3 hidden xl:-translate-x-48 lg:block lg:scale-150 lg:static lg:h-full lg:w-full"
       ></div>
       <div className="flex-4 h-full w-full">
         <div className="flex h-full flex-col justify-center items-center pt-16 gap-2 md:gap-6 lg:gap-6">

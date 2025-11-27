@@ -23,14 +23,41 @@ const CanvasContainer = ({
 }) => {
   const [squarePositions, setSquarePositions] = useState<InputType[]>([]);
   const [zoom, setZoom] = useState<number>(5);
+  const [wireframeCam, setwireFrameCam] = useState<number>(0);
 
-  const lgPositions = useMemo(
+  const xxlPositions = useMemo(
     () => [
       { x: -1, y: -1.5, z: 1.5, size: 0.4 },
       { x: -2, y: -1, z: 1.5, size: 0.5 },
       { x: -4.65, y: 0.55, z: 1.5, size: 0.1 },
       { x: -1.8, y: 1.7, z: 1.5, size: 0.3 },
       { x: 3.7, y: 1.6, z: 1.5, size: 0.2 },
+      { x: 4.65, y: -0.2, z: 1.5, size: 0.17 },
+      { x: 2.1, y: -1.6, z: 1.5, size: 0.7 },
+    ],
+    []
+  );
+
+  const xlPositions = useMemo(
+    () => [
+      { x: -1, y: -1.9, z: 1.5, size: 0.4 },
+      { x: -2.5, y: -1, z: 1.5, size: 0.5 },
+      { x: -3.5, y: 0.55, z: 1.5, size: 0.1 },
+      { x: -1.8, y: 1.7, z: 1.5, size: 0.3 },
+      { x: 3, y: 1.6, z: 1.5, size: 0.2 },
+      { x: 3.5, y: -0.2, z: 1.5, size: 0.17 },
+      { x: 2.1, y: -1.6, z: 1.5, size: 0.7 },
+    ],
+    []
+  );
+
+  const lgPositions = useMemo(
+    () => [
+      { x: -1, y: -1.9, z: 1.5, size: 0.4 },
+      { x: -2.4, y: -1, z: 1.5, size: 0.5 },
+      { x: -4.65, y: 0.55, z: 1.5, size: 0.1 },
+      { x: -2, y: 1.7, z: 1.5, size: 0.3 },
+      { x: 2.5, y: 1.6, z: 1.5, size: 0.2 },
       { x: 4.65, y: -0.2, z: 1.5, size: 0.17 },
       { x: 2.1, y: -1.6, z: 1.5, size: 0.7 },
     ],
@@ -79,7 +106,12 @@ const CanvasContainer = ({
   useEffect(() => {
     function updatePositions() {
       setSquarePositions(() => {
-        if (viewport === "lg" || viewport === "xl" || viewport === "2xl") {
+        if (viewport === "2xl") {
+          return xxlPositions;
+        } else if (viewport === "xl") {
+          return xlPositions;
+        } else if (viewport === "lg") {
+          console.log("LG POSITION ACTIVE");
           return lgPositions;
         } else if (viewport === "md") {
           console.log("MD POSITION ACTIVE");
@@ -93,6 +125,15 @@ const CanvasContainer = ({
       });
 
       setZoom(viewport != "sm" && viewport != "xs" ? 5 : 7);
+
+      if (viewport == "2xl") {
+        setwireFrameCam(0);
+      } else if (viewport == "xl") {
+        setwireFrameCam(1);
+      } else if (viewport == "lg") {
+        setwireFrameCam(2);
+      }
+      // setZoom(6);
     }
 
     updatePositions();
@@ -113,7 +154,11 @@ const CanvasContainer = ({
         <View track={wireframeRef as RefObject<HTMLDivElement>}>
           <ambientLight intensity={1} />
           <WireframeSphere />
-          <PerspectiveCamera makeDefault position={[0, 0, 5]} fov={75} />
+          <PerspectiveCamera
+            makeDefault
+            position={[wireframeCam, 0, 5]}
+            fov={75}
+          />
         </View>
       </Canvas>
     </div>

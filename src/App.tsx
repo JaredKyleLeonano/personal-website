@@ -47,8 +47,13 @@ function App() {
 
   const groupedWorks = [];
 
-  for (let i = 0; i < CompiledWorks.length; i += mobile ? 2 : 4) {
-    groupedWorks.push(CompiledWorks.slice(i, i + (mobile ? 2 : 4)));
+  const groupCondition =
+    mobile == "xs" || mobile == "sm" || mobile == "md" || mobile == "lg"
+      ? 2
+      : 4;
+
+  for (let i = 0; i < CompiledWorks.length; i += groupCondition) {
+    groupedWorks.push(CompiledWorks.slice(i, i + groupCondition));
   }
 
   const section1Ref = useRef<HTMLDivElement>(null);

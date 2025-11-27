@@ -15,7 +15,7 @@ type workCardProps = {
 const WorkCard = ({ works, viewport }: workCardProps) => {
   return (
     <div className="h-full w-full flex flex-col justify-between items-center gap-6 snap-start overflow-hidden z-20 p-2 md:p-8">
-      <div className="h-full w-full flex flex-wrap items-center justify-between md:justify-center md:gap-6">
+      <div className="h-full w-full flex flex-wrap items-center justify-between md:justify-center md:gap-6 ">
         {works.map((work, index) => {
           const isLinkValid = work.link !== "none";
           const statusCondition = work.status === "Completed";
@@ -25,7 +25,7 @@ const WorkCard = ({ works, viewport }: workCardProps) => {
               rel="external"
               target="_blank"
               key={`${index}`}
-              className={`lg:w-[49%] h-[47%] flex justify-between bg-teal-950/50 border-2 border-[#084548] hover:border-[#148e94] transition-all duration-300 ease-out snap-center group rounded ${
+              className={`xl:w-[44%] 2xl:w-[48%] h-[47%] xl:h-[47%] flex justify-between bg-teal-950/50 border-2 border-[#084548] hover:border-[#148e94] transition-all duration-300 ease-out snap-center group rounded ${
                 isLinkValid ? "cursor-pointer" : "cursor-not-allowed"
               }`}
             >
@@ -55,7 +55,7 @@ const WorkCard = ({ works, viewport }: workCardProps) => {
                   </div>
                   <div className="flex h-full gap-6">
                     <div className="flex flex-col flex-3 h-full justify-between">
-                      <p className="font-Exo2 text-gray-300 text-sm md:text-lg">
+                      <p className="font-Exo2 text-gray-300 text-sm md:text-lg 2xl:text-base">
                         {work.description}
                       </p>
                       <div className="flex flex-wrap gap-2">
@@ -64,7 +64,7 @@ const WorkCard = ({ works, viewport }: workCardProps) => {
                             key={index}
                             className="flex justify-center items-center bg-[#062126] border-1 border-[#044d4c] rounded"
                           >
-                            <div className="p-1 text-xs md:text-sm text-teal-500">
+                            <div className="p-1 text-xs md:text-sm 2xl:text-xs text-teal-500">
                               {tech}
                             </div>
                           </div>
@@ -76,10 +76,10 @@ const WorkCard = ({ works, viewport }: workCardProps) => {
                       viewport == "sm" ||
                       viewport == "md"
                     ) && (
-                      <div className="flex-2 flex">
+                      <div className="flex-2 flex h-full items-center justify-center">
                         <img
                           src={work.img}
-                          className="w-full h-full object-cover opacity-0 -translate-x-5 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out rounded"
+                          className="w-full max-h-34 object-cover opacity-0 -translate-x-5 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out rounded"
                         ></img>
                       </div>
                     )}
