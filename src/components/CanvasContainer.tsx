@@ -140,7 +140,15 @@ const CanvasContainer = ({
     window.addEventListener("resize", updatePositions);
 
     return () => window.removeEventListener("resize", updatePositions);
-  }, [xsPositions, viewport, mdPositions]);
+  }, [
+    xsPositions,
+    lgPositions,
+    smPositions,
+    xlPositions,
+    xxlPositions,
+    viewport,
+    mdPositions,
+  ]);
 
   return (
     <div className="absolute h-full w-full z-10 pointer-events-none overflow-hidden">

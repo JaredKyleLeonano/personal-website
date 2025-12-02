@@ -1,23 +1,9 @@
 import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
+import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 import { useState } from "react";
-
-const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  emailjs
-    .sendForm(
-      "service_gusbjy8",
-      "template_na88q9q",
-      e.target as HTMLFormElement,
-      "t2uFcbNd_DbRgahH1"
-    )
-    .then(
-      () => toast.success("Email sent!"),
-      (error) => toast.error("Error: " + error.text)
-    );
-};
 
 const ContactMe = ({
   sectionRef,
@@ -34,6 +20,46 @@ const ContactMe = ({
   const [formName, setFormName] = useState("");
   const [formEmail, setFormEmail] = useState("");
   const [formMessage, setFormMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    setIsSubmitting(true);
+
+    emailjs
+      .sendForm(
+        "service_gusbjy8",
+        "template_na88q9q",
+        e.target as HTMLFormElement,
+        "t2uFcbNd_DbRgahH1"
+      )
+      .then(
+        () => {
+          toast.success("Email sent!");
+          setIsSubmitting(false);
+          setFormName("");
+          setFormEmail("");
+          setFormMessage("");
+        },
+        (error) => {
+          toast.error("Error: " + error.text);
+          setIsSubmitting(false);
+        }
+      );
+  };
+
+  // useEffect(() => {
+  //   const isFormValid = () => {
+  //     return (
+  //       formName.trim() !== "" &&
+  //       isEmailValid(formEmail) &&
+  //       formMessage.trim() !== ""
+  //     );
+  //   };
+
+  //   console.log(isFormValid());
+  // }, [isEmailValid, formName, formEmail, formMessage]);
 
   const isFormValid = () => {
     return (
@@ -75,9 +101,11 @@ const ContactMe = ({
                     Your Name
                   </label>
                   <input
+                    disabled={isSubmitting}
                     type="text"
                     name="name"
                     onChange={(e) => setFormName(e.target.value)}
+                    value={formName}
                     placeholder="Enter your Name"
                     required
                     autoComplete="name"
@@ -89,9 +117,11 @@ const ContactMe = ({
                     Your Email
                   </label>
                   <input
+                    disabled={isSubmitting}
                     type="email"
                     name="email"
                     onChange={(e) => setFormEmail(e.target.value)}
+                    value={formEmail}
                     placeholder="Enter your Email"
                     required
                     autoComplete="email"
@@ -104,8 +134,10 @@ const ContactMe = ({
                   Enter your Message
                 </label>
                 <textarea
+                  disabled={isSubmitting}
                   name="message"
                   onChange={(e) => setFormMessage(e.target.value)}
+                  value={formMessage}
                   placeholder="Share your thoughts, feedback, or collaboration ideas..."
                   required
                   className="focus:outline-none border-b-1 resize-none border-b-[#364153] pb-1 placeholder-gray-400 focus:border-b-yellow-400 transition-colors duration-300 ease-out text-base md:text-xl lg:text-lg"
@@ -113,22 +145,35 @@ const ContactMe = ({
               </div>
               <button
                 type="submit"
-                disabled={!isFormValid()}
+                disabled={!isFormValid() || isSubmitting}
                 className={`flex gap-2 items-center justify-center w-64 p-4 border-2 border-[#364153] transition-all duration-300 ease-out rounded ${
                   !isFormValid()
                     ? "opacity-50 cursor-not-allowed"
                     : "opacity-100 hover:cursor-pointer hover:border-yellow-400"
-                }`}
+                }
+                    ${isSubmitting ? "pointer-events-none" : ""}`}
               >
                 <p className="font-bold text-base md:text-xl lg:text-base">
                   Send
                 </p>
-                <FontAwesomeIcon
-                  className={`transition-colors duration-300 ease-out ${
-                    !isFormValid() ? "text-[#364153]" : "text-yellow-400"
-                  }text-base md:text-xl lg:text-base`}
-                  icon={faPaperPlane}
-                ></FontAwesomeIcon>
+                {isSubmitting ? (
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                    className="w-6 h-6 border-t-2 border-l-2 border-yellow-400 rounded-full"
+                  ></motion.div>
+                ) : (
+                  <FontAwesomeIcon
+                    className={`transition-colors duration-300 ease-out ${
+                      !isFormValid() ? "text-[#364153]" : "text-yellow-400"
+                    } text-base md:text-xl lg:text-base`}
+                    icon={faPaperPlane}
+                  ></FontAwesomeIcon>
+                )}
               </button>
             </form>
           </div>

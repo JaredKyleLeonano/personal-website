@@ -109,7 +109,7 @@ const History = ({
           delay: 0.3,
         }}
       ></motion.div>
-      <div className="absolute w-full text-purple-400/50 font-Exo2 text-lg bottom-4 mt-12 md:mt-2 md:bottom-16 md:text-2xl text-center">
+      <div className="absolute w-full text-purple-400/50 font-Exo2 text-lg bottom-[10%] mt-12 md:mt-2 md:text-2xl md:bottom-[7%] text-center">
         {viewport == "xs" || viewport == "sm" || viewport == "md"
           ? "Click to Reveal Node Details"
           : "Hover to Reveal Node Details"}
