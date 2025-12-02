@@ -93,14 +93,9 @@ const History = ({
                 </button>
               </div>
             ))}
-            <div className="absolute -top-6 h-full border-l-4 border-[#A855F7] -z-10"></div>
+            <div className="absolute -top-6 h-full p-[2px] bg-gradient-to-b from-transparent from-0% to-[#A855F7] to-10% -z-10"></div>
           </div>
         </motion.div>
-        <div className="text-purple-400/50 font-Exo2 text-lg mt-12 md:mt-2 text-center">
-          {viewport == "xs" || viewport == "sm" || viewport == "md"
-            ? "Click to Reveal Node Details"
-            : "Hover to Reveal Node Details"}
-        </div>
       </div>
       <motion.div
         className="absolute top-0 w-full h-2/5 bg-gradient-to-b from-blue-950 to-black opacity-60"
@@ -114,6 +109,11 @@ const History = ({
           delay: 0.3,
         }}
       ></motion.div>
+      <div className="absolute w-full text-purple-400/50 font-Exo2 text-lg bottom-4 mt-12 md:mt-2 md:bottom-16 md:text-2xl text-center">
+        {viewport == "xs" || viewport == "sm" || viewport == "md"
+          ? "Click to Reveal Node Details"
+          : "Hover to Reveal Node Details"}
+      </div>
     </section>
   );
 };
