@@ -46,7 +46,7 @@ const ContactMe = ({
   return (
     <section
       ref={sectionRef}
-      className="flex justify-center items-center h-dvh w-screen relative [background:radial-gradient(ellipse_100%_130%_at_2%_53%,#B37800_0%,black_40%)] snap-center"
+      className="flex justify-center items-center h-svh w-screen relative [background:radial-gradient(ellipse_100%_130%_at_2%_53%,#B37800_0%,black_40%)] snap-center"
     >
       <div
         ref={globeRef}

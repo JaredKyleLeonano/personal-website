@@ -125,7 +125,7 @@ function App() {
   return (
     <div
       ref={containerRef}
-      className="h-screen overflow-y-scroll overflow-x-clip snap-y snap-mandatory z-20"
+      className="h-svh overflow-y-scroll overflow-x-clip snap-y snap-mandatory z-20"
     >
       <Toaster theme="dark" position="bottom-right" richColors />
       <Header

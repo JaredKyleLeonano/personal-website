@@ -39,7 +39,7 @@ const Links = ({
   return (
     <section
       ref={sectionRef}
-      className="flex justify-center items-center h-dvh w-screen relative bg-linear-to-b from-black to-[#1a1a1a] to-20% snap-center"
+      className="flex justify-center items-center h-svh w-screen relative bg-linear-to-b from-black to-[#1a1a1a] to-20% snap-center"
     >
       <div className="absolute inset-0 pointer-events-none opacity-20 bg-[repeating-linear-gradient(0deg,transparent,transparent_2px,rgba(45,212,191,0.03)_2px,rgba(45,212,191,0.03)_4px)]" />
       <div className="flex h-full flex-col w-full items-center justify-center  px-4 pt-12 gap-8 md:gap-24 lg:px-24 xl:px-64 xl:gap-16">

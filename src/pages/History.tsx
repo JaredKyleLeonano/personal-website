@@ -20,7 +20,7 @@ const History = ({
   return (
     <section
       ref={sectionRef}
-      className="h-dvh w-screen relative flex flex-col justify-center gap-6 bg-black snap-center"
+      className="h-svh w-screen relative flex flex-col justify-center gap-6 bg-black snap-center"
     >
       <motion.div
         className="absolute inset-0 h-full w-full z-20
@@ -40,7 +40,7 @@ const History = ({
         }}
       ></motion.div>
       <motion.div
-        className="absolute w-screen h-dvh [background:radial-gradient(ellipse_120%_120%_at_50%_55%,rgba(168,85,247,0.3)_0%,black_60%)] z-10"
+        className="absolute w-screen h-svh [background:radial-gradient(ellipse_120%_120%_at_50%_55%,rgba(168,85,247,0.3)_0%,black_60%)] z-10"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ root: containerRef, amount: 1 }}

@@ -12,7 +12,7 @@ const AboutMe = ({
   return (
     <section
       ref={sectionRef}
-      className="h-dvh w-screen relative flex justify-center bg-black snap-center overflow-clip"
+      className="h-svh w-screen relative flex justify-center bg-black snap-center overflow-clip"
     >
       <motion.div
         className="absolute bottom-0 w-full h-2/5 bg-gradient-to-t from-blue-950 to-black"
