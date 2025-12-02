@@ -6,7 +6,7 @@ const LandingPage = ({
   return (
     <section
       ref={sectionRef}
-      className="relative flex items-center flex-col h-screen w-screen bg-radial from-[#32042F] to-black snap-start"
+      className="relative flex items-center flex-col h-[100dvh] w-screen bg-radial from-[#32042F] to-black snap-start"
     >
       <div className="absolute h-full w-full"></div>
       <div className="flex items-center h-full text-white">
