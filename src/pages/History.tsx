@@ -20,7 +20,7 @@ const History = ({
   return (
     <section
       ref={sectionRef}
-      className="h-screen w-screen relative flex flex-col justify-center gap-6 bg-black snap-center"
+      className="h-[100dvh] w-screen relative flex flex-col justify-center gap-6 bg-black snap-center"
     >
       <motion.div
         className="absolute inset-0 h-full w-full z-20
