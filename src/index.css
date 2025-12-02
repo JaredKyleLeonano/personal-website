@@ -1,10 +1,8 @@
 @import "tailwindcss";
 
-.path {
-  /* -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 40% 100%, 0% 100%); */
-  /* clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 40% 100%, 0% 100%); */
-  -webkit-clip-path: url(#wave);
-  clip-path: url(#wave);
+.full-height-fix {
+  height: 100vh;
+  height: 100dvh;
 }
 
 @font-face {
