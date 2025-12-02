@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 const History = ({
   containerRef,
   sectionRef,
-  scrollDirection,
   viewport,
 }: {
   containerRef: React.RefObject<HTMLDivElement | null>;
@@ -97,18 +96,6 @@ const History = ({
           </div>
         </motion.div>
       </div>
-      <motion.div
-        className="absolute top-0 w-full h-2/5 bg-gradient-to-b from-blue-950 to-black opacity-60"
-        key={scrollDirection}
-        initial={scrollDirection === "down" ? { opacity: 0.6 } : { opacity: 0 }}
-        whileInView={{ opacity: 0 }}
-        viewport={{ root: containerRef, amount: 1 }}
-        transition={{
-          duration: 1,
-          ease: "easeInOut",
-          delay: 0.3,
-        }}
-      ></motion.div>
       <div className="absolute w-full text-purple-400/50 font-Exo2 text-lg bottom-[10%] mt-12 md:mt-2 md:text-2xl md:bottom-[7%] text-center">
         {viewport == "xs" || viewport == "sm" || viewport == "md"
           ? "Click to Reveal Node Details"
