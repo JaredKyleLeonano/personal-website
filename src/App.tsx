@@ -3,14 +3,13 @@ import { useInView } from "framer-motion";
 import { useLayoutEffect } from "react";
 import { Toaster } from "sonner";
 import LandingPage from "./pages/LandingPage";
-import AboutMe from "./pages/AboutMe";
-import History from "./pages/History";
 import Works from "./pages/Works";
 import ContactMe from "./pages/ContactMe";
 import Links from "./pages/Links";
 import Header from "./components/Header";
 import CanvasContainer from "./components/CanvasContainer";
 import CompiledWorks from "./components/CompiledWorks";
+import Transition from "./pages/Transition";
 
 const getBreakpoint = () => {
   if (window.matchMedia("(min-width: 1536px)").matches) {
@@ -71,6 +70,7 @@ function App() {
   const section4Visible = useInView(section4Ref, { amount: 0.3 });
   const section5Visible = useInView(section5Ref, { amount: 0.3 });
   const section6Visible = useInView(section6Ref, { amount: 0.3 });
+  const activateTransition = useInView(section2Ref, { amount: 0.8 });
 
   const [scrollDirection, setScrollDirection] = useState<"up" | "down">("down");
   const lastScrollY = useRef(0);
@@ -120,7 +120,14 @@ function App() {
     console.log("Section 2 Visible:", section2Visible);
     console.log("Section 3 Visible:", section3Visible);
     console.log("Section 4 Visible:", section4Visible);
-  }, [section1Visible, section2Visible, section3Visible, section4Visible]);
+    console.log("ACTIVATE TRANSITION:", activateTransition);
+  }, [
+    section1Visible,
+    section2Visible,
+    section3Visible,
+    section4Visible,
+    activateTransition,
+  ]);
 
   return (
     <div
@@ -141,18 +148,15 @@ function App() {
 
       <LandingPage sectionRef={section1Ref}></LandingPage>
 
-      <AboutMe
+      <Transition
         containerRef={containerRef}
-        sectionRef={section2Ref}
-        sectionVisible={section2Visible}
-      ></AboutMe>
-
-      <History
-        containerRef={containerRef}
-        sectionRef={section3Ref}
+        section2Ref={section2Ref}
+        section3Ref={section3Ref}
+        section2Visible={section2Visible}
         scrollDirection={scrollDirection}
         viewport={mobile}
-      ></History>
+        transitionCondition={activateTransition}
+      ></Transition>
 
       <Works
         sectionRef={section4Ref}

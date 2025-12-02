@@ -5,6 +5,11 @@
   height: 100dvh;
 }
 
+.top-height-spacing {
+  top: 100vh;
+  top: 100dvh;
+}
+
 @font-face {
   font-family: "Cairoli";
   src: url("/assets/fonts/Italiantype - CairoliClassic Extended Thin Italic.ttf");

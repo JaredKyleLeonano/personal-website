@@ -32,7 +32,7 @@ const WorkCard = ({ works, viewport }: workCardProps) => {
               <div className="flex flex-col w-full h-full flex-4 justify-between p-4">
                 <div className="flex flex-col h-full gap-4">
                   <div className="flex justify-between">
-                    <p className="font-Zrnic text-teal-500 text-xl md:text-3xl">
+                    <p className="font-Zrnic text-teal-500 text-xl md:text-3xl xl:text-2xl 2xl:text-3xl">
                       {work.title}
                     </p>
                     <div
@@ -55,7 +55,7 @@ const WorkCard = ({ works, viewport }: workCardProps) => {
                   </div>
                   <div className="flex h-full gap-6">
                     <div className="flex flex-col flex-3 h-full justify-between">
-                      <p className="font-Exo2 text-gray-300 text-sm md:text-lg 2xl:text-base">
+                      <p className="font-Exo2 text-gray-300 text-sm md:text-lg xl:text-sm 2xl:text-base">
                         {work.description}
                       </p>
                       <div className="flex flex-wrap gap-2">
@@ -64,7 +64,7 @@ const WorkCard = ({ works, viewport }: workCardProps) => {
                             key={index}
                             className="flex justify-center items-center bg-[#062126] border-1 border-[#044d4c] rounded"
                           >
-                            <div className="p-1 text-xs md:text-sm 2xl:text-xs text-teal-500">
+                            <div className="p-1 text-xs md:text-sm xl:text-xs text-teal-500">
                               {tech}
                             </div>
                           </div>
