@@ -68,7 +68,7 @@ const History = ({
             {descriptions.map((description, index) => (
               <div key={index} className="relative">
                 <button
-                  className="group"
+                  className="group focus:outline-none focus:ring-0"
                   onClick={(e) => e.currentTarget.focus()}
                 >
                   <div className="flex justify-center items-center peer bg-[#491275] rounded-full border-4 border-[#A855F7] shadow-[0_0_25px_#A855F7] hover:scale-110 transition-transform duration-300 ease-out w-18 h-18 md:w-24 md:h-24">
@@ -99,7 +99,7 @@ const History = ({
           </div>
         </motion.div>
       </div>
-      <div className="absolute w-full text-purple-400/50 font-Exo2 text-lg bottom-[10%] mt-12 md:mt-2 md:text-2xl md:bottom-[7%] text-center">
+      <div className="absolute w-full text-purple-400/50 font-Exo2 text-lg bottom-[8%] mt-12 md:mt-2 md:text-2xl md:bottom-[7%] text-center">
         {viewport == "xs" || viewport == "sm" || viewport == "md"
           ? "Click to Reveal Node Details"
           : "Hover to Reveal Node Details"}
