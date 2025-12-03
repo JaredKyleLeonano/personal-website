@@ -74,10 +74,10 @@ const History = ({
                     </p>
                   </div>
                   <div
-                    className={`absolute top-1/2 -translate-y-1/2 w-56 md:w-120 lg:w-84 xl:w-120 flex items-center p-4 bg-[#101626] border-2 border-[#7F22E360] opacity-0 rounded-lg group-hover:opacity-100 group-focus:opacity-100 pointer-events-none transition-all duration-400 ease-out 
+                    className={`absolute top-1/2 -translate-y-1/2 w-56 md:w-120 lg:w-84 xl:w-120 flex items-center p-4 bg-[#101626] border-2 border-[#7F22E360] opacity-0 rounded-lg group-hover:opacity-100 pointer-events-none transition-all duration-400 ease-out 
                       ${
                         viewport == "xs" || viewport == "sm" || viewport == "md"
-                          ? "left-[100%] group-focus:left-[120%]"
+                          ? "left-[100%] group-focus:left-[120%] group-focus:opacity-100"
                           : `${
                               index % 2
                                 ? "left-[130%] group-hover:left-[150%]"
