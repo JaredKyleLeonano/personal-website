@@ -67,7 +67,10 @@ const History = ({
           <div className="flex flex-col items-center relative gap-10 md:gap-18">
             {descriptions.map((description, index) => (
               <div key={index} className="relative">
-                <button className="group cursor-pointer touch-auto">
+                <button
+                  className="group"
+                  onClick={(e) => e.currentTarget.focus()}
+                >
                   <div className="flex justify-center items-center peer bg-[#491275] rounded-full border-4 border-[#A855F7] shadow-[0_0_25px_#A855F7] hover:scale-110 transition-transform duration-300 ease-out w-18 h-18 md:w-24 md:h-24">
                     <p className="font-Zrnic text-white text-3xl md:text-5xl">
                       {index + 1}
