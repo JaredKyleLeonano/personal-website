@@ -107,8 +107,10 @@ const CanvasContainer = ({
     function updatePositions() {
       setSquarePositions(() => {
         if (viewport === "2xl") {
+          console.log("XXL POSITION ACTIVE");
           return xxlPositions;
         } else if (viewport === "xl") {
+          console.log("XL POSITION ACTIVE");
           return xlPositions;
         } else if (viewport === "lg") {
           console.log("LG POSITION ACTIVE");

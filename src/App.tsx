@@ -29,6 +29,7 @@ const getBreakpoint = () => {
 
 function App() {
   const [mobile, setMobile] = useState(getBreakpoint);
+  let groupCondition;
 
   useEffect(() => {
     function handleResize() {
@@ -46,10 +47,20 @@ function App() {
 
   const groupedWorks = [];
 
-  const groupCondition =
-    mobile == "xs" || mobile == "sm" || mobile == "md" || mobile == "lg"
-      ? 2
-      : 4;
+  // let groupCondition;
+  // mobile == "xs" || mobile == "sm" || mobile == "md" || mobile == "lg"
+  //   ? 1
+  //   : 4;
+
+  if (mobile == "xs" || mobile == "sm" || mobile == "md") {
+    groupCondition = 1;
+  } else if (mobile == "lg" || mobile == "xl") {
+    groupCondition = 2;
+  } else {
+    groupCondition = 4;
+  }
+
+  console.log("GROUP CONDITION IS:", groupCondition);
 
   for (let i = 0; i < CompiledWorks.length; i += groupCondition) {
     groupedWorks.push(CompiledWorks.slice(i, i + groupCondition));
