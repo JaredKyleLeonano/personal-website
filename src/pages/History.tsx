@@ -16,6 +16,12 @@ const History = ({
     "Completed the full-stack loop by gaining proficiency in server-side development (Node.js), implementing robust data modeling and persistence with PostgreSQL/SQL, and integrating scalable solutions through API calls",
     "Currently focused on advancing next-level user experience (UX) using Tailwind CSS, fully responsive design, Framer Motion, and Three.js, while continuously learning to refine code quality and maintainability through advanced TypeScript practices",
   ];
+  const titles = [
+    "Foundations & Core Logic",
+    "Modern Architecture",
+    "Full Stack Integration",
+    "Advanced UX & Quality",
+  ];
   return (
     <section
       ref={sectionRef}
@@ -83,13 +89,27 @@ const History = ({
                           ? "left-[100%] group-focus:left-[120%] group-focus:opacity-100"
                           : `${
                               index % 2
-                                ? "left-[130%] group-hover:left-[150%]"
-                                : "right-[130%] group-hover:right-[150%]"
+                                ? "right-[130%] group-hover:right-[150%]"
+                                : "left-[130%] group-hover:left-[150%]"
                             }`
                       }`}
                   >
                     <p className="font-Exo2 text-white text-xs md:text-lg ">
                       {description}
+                    </p>
+                  </div>
+                  <div
+                    className={`absolute top-1/2 -translate-y-1/2 whitespace-nowrap transition-all duration-100 ease-out
+                       ${
+                         viewport == "xs" ||
+                         viewport == "sm" ||
+                         viewport == "md"
+                           ? "left-[150%] group-focus:opacity-0"
+                           : `${index % 2 ? "left-[150%]" : "right-[150%]"}`
+                       }`}
+                  >
+                    <p className="font-Zrnic text-white text-shadow-lg shadow-red-600 text-lg md:text-3xl xl:text-5xl">
+                      {titles[index]}
                     </p>
                   </div>
                 </button>
