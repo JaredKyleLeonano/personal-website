@@ -9,6 +9,7 @@ const Transition = ({
   scrollDirection,
   viewport,
   transitionCondition,
+  allowHistoryAnimation,
 }: {
   containerRef: React.RefObject<HTMLDivElement | null>;
   section2Ref: React.RefObject<HTMLDivElement | null>;
@@ -17,6 +18,7 @@ const Transition = ({
   section2Visible: boolean;
   viewport: string;
   transitionCondition: boolean;
+  allowHistoryAnimation: boolean;
 }) => {
   return (
     <div className="relative">
@@ -29,7 +31,7 @@ const Transition = ({
       <div className="absolute w-full h-1/5 top-height-spacing flex -translate-y-1/2 flex-col z-10">
         <motion.div
           className=" w-full flex-1 bg-gradient-to-t from-blue-950 to-transparent"
-          initial={{ opacity: 0.6 }}
+          initial={false}
           animate={{ opacity: transitionCondition ? 0.6 : 0 }}
           transition={{
             duration: 1,
@@ -40,7 +42,7 @@ const Transition = ({
         ></motion.div>
         <motion.div
           className=" w-full flex-1 bg-gradient-to-b from-blue-950 to-transparent z-30"
-          initial={{ opacity: 0.6 }}
+          initial={false}
           animate={{ opacity: transitionCondition ? 0.6 : 0 }}
           transition={{
             duration: 1,
@@ -56,6 +58,7 @@ const Transition = ({
         sectionRef={section3Ref}
         scrollDirection={scrollDirection}
         viewport={viewport}
+        allowAnimation={allowHistoryAnimation}
       ></History>
     </div>
   );

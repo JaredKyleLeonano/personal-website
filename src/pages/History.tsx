@@ -4,11 +4,13 @@ const History = ({
   containerRef,
   sectionRef,
   viewport,
+  allowAnimation,
 }: {
   containerRef: React.RefObject<HTMLDivElement | null>;
   sectionRef: React.RefObject<HTMLDivElement | null>;
   scrollDirection: string;
   viewport: string;
+  allowAnimation: boolean;
 }) => {
   const descriptions = [
     "Established the core principles of software engineering by mastering Java for object-oriented logic and building responsive, interactive user interfaces with HTML, CSS, and vanilla JavaScript",
@@ -37,7 +39,7 @@ const History = ({
               [mask-repeat:no-repeat]
               [mask-position:50%_70%]"
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        whileInView={{ opacity: allowAnimation ? 1 : 0 }}
         viewport={{ root: containerRef, amount: 1 }}
         transition={{
           duration: 1,
@@ -47,7 +49,7 @@ const History = ({
       <motion.div
         className="absolute w-screen full-height-fix [background:radial-gradient(ellipse_120%_120%_at_50%_55%,rgba(168,85,247,0.3)_0%,black_60%)] z-10"
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        whileInView={{ opacity: allowAnimation ? 1 : 0 }}
         viewport={{ root: containerRef, amount: 1 }}
         transition={{
           duration: 1,
@@ -63,7 +65,7 @@ const History = ({
               : "items-center"
           }`}
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          whileInView={{ opacity: allowAnimation ? 1 : 0 }}
           viewport={{ root: containerRef, amount: 1, once: true }}
           transition={{
             duration: 1,
@@ -99,7 +101,7 @@ const History = ({
                     </p>
                   </div>
                   <div
-                    className={`absolute top-1/2 -translate-y-1/2 whitespace-nowrap transition-all duration-100 ease-out
+                    className={`absolute top-1/2 -translate-y-1/2 whitespace-nowrap transition-all duration-100 ease-out pointer-events-none  
                        ${
                          viewport == "xs" ||
                          viewport == "sm" ||
@@ -108,7 +110,7 @@ const History = ({
                            : `${index % 2 ? "left-[150%]" : "right-[150%]"}`
                        }`}
                   >
-                    <p className="font-Zrnic text-white text-shadow-lg shadow-red-600 text-lg md:text-3xl xl:text-5xl">
+                    <p className="font-Zrnic text-white text-lg md:text-3xl xl:text-5xl">
                       {titles[index]}
                     </p>
                   </div>

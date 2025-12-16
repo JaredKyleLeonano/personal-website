@@ -23,7 +23,7 @@ const getBreakpoint = () => {
   } else if (window.matchMedia("(min-width: 640px)").matches) {
     return "sm";
   } else {
-    return "xs"; // optional: below 640px
+    return "xs";
   }
 };
 
@@ -46,11 +46,6 @@ function App() {
   }, []);
 
   const groupedWorks = [];
-
-  // let groupCondition;
-  // mobile == "xs" || mobile == "sm" || mobile == "md" || mobile == "lg"
-  //   ? 1
-  //   : 4;
 
   if (mobile == "xs" || mobile == "sm" || mobile == "md") {
     groupCondition = 1;
@@ -85,6 +80,24 @@ function App() {
 
   const [scrollDirection, setScrollDirection] = useState<"up" | "down">("down");
   const lastScrollY = useRef(0);
+
+  const [loaded, setLoaded] = useState(false);
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+  const [canvasLoaded, setCanvasLoaded] = useState(false);
+  const [allowHistoryAnimation, setAllowHistoryAnimation] = useState(false);
+
+  useEffect(() => {
+    document.fonts.ready.then(() => setFontsLoaded(true));
+  }, []);
+
+  useEffect(() => {
+    if (fontsLoaded && canvasLoaded) {
+      setLoaded(true);
+      setTimeout(() => {
+        setAllowHistoryAnimation(true);
+      }, 300);
+    }
+  }, [fontsLoaded, canvasLoaded]);
 
   useLayoutEffect(() => {
     const container = containerRef.current;
@@ -145,6 +158,11 @@ function App() {
       ref={containerRef}
       className="h-svh overflow-y-scroll overflow-x-clip snap-y snap-mandatory z-20"
     >
+      <div
+        className={`fixed h-screen w-screen bg-black transition-all duration-1000 ${
+          loaded ? "opacity-0 z-0" : "opacity-100 z-40"
+        }`}
+      ></div>
       <Toaster theme="dark" position="bottom-right" richColors />
       <Header
         headerText={headerText}
@@ -155,6 +173,7 @@ function App() {
         sectionRef={section1Ref}
         wireframeRef={wireframeRef}
         viewport={mobile}
+        setCanvasLoaded={setCanvasLoaded}
       ></CanvasContainer>
 
       <LandingPage sectionRef={section1Ref}></LandingPage>
@@ -167,6 +186,7 @@ function App() {
         scrollDirection={scrollDirection}
         viewport={mobile}
         transitionCondition={activateTransition}
+        allowHistoryAnimation={allowHistoryAnimation}
       ></Transition>
 
       <Works

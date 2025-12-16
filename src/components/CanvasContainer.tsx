@@ -16,10 +16,12 @@ const CanvasContainer = ({
   sectionRef,
   wireframeRef,
   viewport,
+  setCanvasLoaded,
 }: {
   sectionRef: React.RefObject<HTMLDivElement | null>;
   wireframeRef: React.RefObject<HTMLDivElement | null>;
   viewport: string;
+  setCanvasLoaded: (loaded: boolean) => void;
 }) => {
   const [squarePositions, setSquarePositions] = useState<InputType[]>([]);
   const [zoom, setZoom] = useState<number>(5);
@@ -154,7 +156,12 @@ const CanvasContainer = ({
 
   return (
     <div className="absolute h-full w-full z-10 pointer-events-none overflow-hidden">
-      <Canvas style={{ pointerEvents: "none", clipPath: "inset(0)" }}>
+      <Canvas
+        onCreated={() => {
+          setCanvasLoaded(true);
+        }}
+        style={{ pointerEvents: "none", clipPath: "inset(0)" }}
+      >
         <View track={sectionRef as RefObject<HTMLDivElement>}>
           <ambientLight intensity={0.8} />
           <pointLight position={[0, 0, 2]} intensity={5} distance={0} />
