@@ -1,5 +1,14 @@
 const CompiledWorks = [
   {
+    title: "Monster Hunter Armor Set Builder",
+    description:
+      "A web application that allows users to create and customize armor sets for the game Monster Hunter Generations Ultimate, providing detailed stats and visual representations.",
+    status: "Completed",
+    techStack: ["React", "TypeScript", "Tailwind", "IndexedDb"],
+    link: "https://github.com/amielchristian/pautakan-2025#",
+    img: "/assets/images/mhguSetBuilder.jpg",
+  },
+  {
     title: "Ableton Clone",
     description:
       "A fully responsive front-end recreation of the official Ableton website homepage, accurately matching its design and layout across all devices.",
