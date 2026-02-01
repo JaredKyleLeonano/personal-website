@@ -5,7 +5,7 @@ const CompiledWorks = [
       "A web application that allows users to create and customize armor sets for the game Monster Hunter Generations Ultimate, providing detailed stats and visual representations.",
     status: "Completed",
     techStack: ["React", "TypeScript", "Tailwind", "IndexedDb"],
-    link: "https://github.com/amielchristian/pautakan-2025#",
+    link: "https://mhgu-set-builder.vercel.app/",
     img: "/assets/images/mhguSetBuilder.jpg",
   },
   {
