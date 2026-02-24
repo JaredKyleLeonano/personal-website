@@ -21,9 +21,9 @@ const CompiledWorks = [
     title: "Modified LawBandit",
     description:
       "A front-end recreation of LawBandit's official homepage with added AI feature to read course syllabus and schedule tasks automatically",
-    status: "In Progress",
+    status: "Completed",
     techStack: ["Node Js", "TypeScript", "Tailwind", "OpenAI API", "Supabase"],
-    link: "none",
+    link: "https://law-bandit-front-end.vercel.app/signIn",
     img: "/assets/images/lawBandit2.jpg",
   },
   {
