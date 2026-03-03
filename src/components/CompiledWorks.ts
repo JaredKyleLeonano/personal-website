@@ -1,5 +1,14 @@
 const CompiledWorks = [
   {
+    title: "ShredCo: Shopify E-Commerce Store",
+    description:
+      "A responsive Shopify storefront for a fictional snowboard brand, featuring custom sections, dynamic upsells, and mobile-optimized navigation. Password: Bibram",
+    status: "Completed",
+    techStack: ["Shopify Liquid", "HTML/CSS", "Javascript"],
+    link: "https://sample-12345679000232.myshopify.com/",
+    img: "/assets/images/ShredCo.jpg",
+  },
+  {
     title: "Monster Hunter Armor Set Builder",
     description:
       "A web application that allows users to create and customize armor sets for the game Monster Hunter Generations Ultimate, providing detailed stats and visual representations.",
