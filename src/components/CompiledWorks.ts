@@ -1,12 +1,12 @@
 const CompiledWorks = [
   {
-    title: "ShredCo: Shopify E-Commerce Store",
+    title: "HappyHour PH: Shopify E-Commerce Store",
     description:
-      "A responsive Shopify storefront for a fictional snowboard brand, featuring custom sections, dynamic upsells, and mobile-optimized navigation. Password: Bibram",
+      "A storefront for an on-demand liquor and grocery delivery service, featuring organized collections, promotional offers, gifting options, and a mobile-optimized shopping experience.",
     status: "Completed",
     techStack: ["Shopify Liquid", "HTML/CSS", "Javascript"],
     link: "https://sample-12345679000232.myshopify.com/",
-    img: "/assets/images/ShredCo.jpg",
+    img: "/assets/images/happyHour.jpg",
   },
   {
     title: "Monster Hunter Armor Set Builder",
@@ -16,6 +16,15 @@ const CompiledWorks = [
     techStack: ["React", "TypeScript", "Tailwind", "IndexedDb"],
     link: "https://mhgu-set-builder.vercel.app/",
     img: "/assets/images/mhguSetBuilder.jpg",
+  },
+  {
+    title: "Pautakan Scoreboard 2026",
+    description:
+      "A custom-built scoreboard application for Pautakan, a university-wide quiz competition, featuring a space-themed interface.",
+    status: "Completed",
+    techStack: ["Electron Js", "TypeScript", "Tailwind", "SQLite"],
+    link: "https://github.com/alon-software-labs/pautakan",
+    img: "/assets/images/pautakanSpace.jpg",
   },
   {
     title: "Ableton Clone",
@@ -36,9 +45,9 @@ const CompiledWorks = [
     img: "/assets/images/lawBandit2.jpg",
   },
   {
-    title: "Pautakan Scoreboard",
+    title: "Pautakan Scoreboard 2025",
     description:
-      "A custom built scoreboard application for Pautakan, a university wide quiz competition",
+      "A custom built scoreboard application for Pautakan, a university wide quiz competition, featuring a spy-themed interface",
     status: "Completed",
     techStack: ["Electron Js", "TypeScript", "Tailwind", "SQLite"],
     link: "https://github.com/amielchristian/pautakan-2025#",
